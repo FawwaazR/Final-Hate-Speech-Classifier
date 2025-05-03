@@ -64,7 +64,7 @@ class HateSpeechClassifier:
     - BERTweet_classify: used BERTweet model to predict labels of social media posts and evaluates performance through a classification report.
     """
     def __init__(self, data, text_col, label_col):
-        self.df = data
+        self.df = data.copy()
         self.text = text_col
         self.label = label_col
 
@@ -149,7 +149,7 @@ class HateSpeechClassifier:
         # Fit and visualise LDA model with optimal number of topics
         h_lda_model = LdaModel(corpus=h_corpus,
                     id2word=h_id2word,
-                    num_topics=3,
+                    num_topics=optimal_T,
                     random_state=0,
                     chunksize=100,
                     alpha='auto',
